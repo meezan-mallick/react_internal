@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Form = () => {
@@ -11,8 +12,7 @@ const Form = () => {
     const [gender,setGender] = useState("");
 
     const cards = useSelector((state)=>state);
-    console.log(cards)
-
+    const dispatch = useDispatch();
 
      // Find the first digit
      function firstDigit(n)
@@ -42,7 +42,22 @@ const Form = () => {
         if(mobileNumber.length<10){
             return toast.error("mobile number should be more than 10 digit");
         }
+        else{
+            const data = {
+                id: cards[cards.length - 1].id + 1,
+                cardNumber,
+                name,
+                mobileNumber,
+                gender
+            }
+
+            dispatch({type:"ADD_CARD",payload:data})
+            toast.success("Card Added");
+        }
         
+        
+
+       
        
     }
 

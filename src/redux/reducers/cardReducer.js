@@ -12,6 +12,9 @@ const intialState = [
 
 const cardReducer = (state = intialState,action) =>{
     switch(action.type){
+        case "ADD_CARD":
+            state = [...state, action.payload];
+            return state;
         default:
             return state;
     }
