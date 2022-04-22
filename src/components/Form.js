@@ -43,6 +43,7 @@ const Form = () => {
             return toast.error("mobile number should be more than 10 digit");
         }
         else{
+            
             const data = {
                 id: cards[cards.length - 1].id + 1,
                 cardNumber,
@@ -54,11 +55,6 @@ const Form = () => {
             dispatch({type:"ADD_CARD",payload:data})
             toast.success("Card Added");
         }
-        
-        
-
-       
-       
     }
 
 
